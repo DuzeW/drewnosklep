@@ -23,24 +23,10 @@
     </button>
 </div>
 <div class="right">
-<div class="content_a">
-    <center><h2>STRONA GŁÓWNA</h2></center>
-</div>
-<div class="content_b">
+    <div class="content_a">
+        <center><h2>Produkty</h2></center>
+    </div>
 
-
-    <h2>Nasza Oferta</h2>
-    Oferujemy szeroki wybór najwyższej jakości desk, które spełnią nawet najbardziej wymagające oczekiwania. Niezależnie od tego,
-    czy szukasz idealnej deski do klasycznego, minimalistycznego czy też nowoczesnego wystroju, mamy dla Ciebie coś wyjątkowego.
-<br><br>
-    Stawiamy na ekologiczne rozwiązania, dlatego wszystkie nasze produkty pochodzą z certyfikowanych źródeł,
-    co zapewnia odpowiedzialne gospodarowanie zasobami przyrody.
-</div>
-<div class="content_a">
-    <center><h2>Nasza lokalizacja</h2></center>
-    <div id="map"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" async defer></script>
-</div>
 </div>
 </div>
 </body>

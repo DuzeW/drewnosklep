@@ -1,0 +1,68 @@
+.sidebar {
+    background: rgb(77, 51, 31);
+    color: rgb(225, 225, 225);
+    display: flex;
+    width: 17.5vw;
+    height: 100vh;
+    position: fixed;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 0;
+    transition: width 0.3s;
+    overflow: hidden;
+}
+.sidebar div {
+    margin-bottom: 2vw;
+}
+.sidebar.collapsed {
+    width: 7.5vw;
+}
+.sidebar.collapsed img {
+    width: 7.5vw;
+    height: auto;
+}
+.right{
+    width: 98vw;
+    justify-content: center;
+    transition: width 0.3s;
+}
+.right.uncollapsed{
+    width: 108vw;
+    justify-content: center;
+    margin-left: -10vw;
+}
+.right img{
+
+}
+
+.toggle-button {
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    background: rgb(77, 51, 31);
+    border: none;
+    padding: 5px 10px;
+    margin-top: auto;
+}
+.content_a {
+    margin-left: 17.5vw;
+    background: rgb(77, 51, 31);
+    color: rgb(255, 255, 255);;
+    padding: 20px;
+    transition: width 0.3s;
+}
+.content_b {
+    margin-left: 17.5vw;
+    color: rgb(77, 51, 31);
+    padding: 20px;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
