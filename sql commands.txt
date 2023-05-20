@@ -1,0 +1,68 @@
+
+CREATE DATABASE drewnosklepdb;
+
+CREATE TABLE address(
+    id serial PRIMARY KEY,
+    county varchar(30) NOT NULL,
+    city varchar(40) NOT NULL,
+    zip_code varchar(10) NOT NULL,
+    street varchar(50) NOT NULL,
+    house_nr varchar(4) NOT NULL,
+    flat_nr varchar(5)
+);
+
+CREATE TABLE customer(
+    id serial PRIMARY KEY,
+    e_mali varchar(50) NOT NULL,
+    phone_nr int,
+    password varchar(50) NOT NULL,
+    name varchar(50) NOT NULL,
+    last_name varchar(50) NOT NULL,
+    address_id integer REFERENCES address(id)
+);
+CREATE TABLE category(
+    id serial PRIMARY KEY,
+    name varchar(30) NOT NULL,
+    description varchar(500)
+);
+CREATE TABLE product(
+    id serial PRIMARY KEY,
+    name varchar(50) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    quantity_available int,
+    category_id integer REFERENCES category(id)
+);
+CREATE TABLE products_in_cart(
+    id serial PRIMARY KEY,
+    customer_id integer REFERENCES customer(id),
+    product_id integer REFERENCES product(id),
+    amount int
+);
+CREATE TABLE payment_type(
+    id serial PRIMARY KEY,
+    name varchar(25) NOT NULL
+);
+CREATE TABLE status_of_order(
+    id serial PRIMARY KEY,
+    name varchar(20) NOT NULL,
+    description varchar(200)
+);
+CREATE TABLE orders (
+    id serial PRIMARY KEY,
+    order_date date NOT NULL,
+    customer_id integer REFERENCES customer(id),
+    payment_type_id integer REFERENCES payment_type(id),
+    status_of_order_id integer REFERENCES status_of_order(id),
+    address_id integer REFERENCES address(id)
+);
+CREATE TABLE ordered_products(
+    id serial PRIMARY KEY,
+    order_id integer REFERENCES orders(id),
+    product_id integer REFERENCES product(id),
+    amount int NOT NULL,
+    price DECIMAL(10,2) NOT NULL
+);
+
+
+
+
