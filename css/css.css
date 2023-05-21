@@ -13,6 +13,10 @@
     transition: width 0.3s;
     overflow: hidden;
 }
+.sidebar a{
+    color: white;
+    text-decoration: none;
+}
 .sidebar div {
     margin-bottom: 2vw;
 }
@@ -23,20 +27,30 @@
     width: 5vw;
     height: auto;
 }
+.sidebar.collapsed a{
+    color: rgb(77, 51, 31);
+    text-decoration: none;
+}
 .right{
-    width: 98vw;
+    margin-left: 17.5vw ;
     justify-content: center;
     transition: width 0.3s;
 }
 .right.uncollapsed{
-    width: 108vw;
+    margin-left: 7.5vw ;
     justify-content: center;
-    margin-left: -10vw;
 }
-.right img{
+.right_product{
+    margin-left: 17.5vw ;
+    justify-content: center;
+    transition: width 0.3s;
 
 }
+.right_product.uncollapsed{
+    margin-left: 7.5vw ;
+    justify-content: center;
 
+}
 .toggle-button {
     cursor: pointer;
     color: rgb(255, 255, 255);
@@ -46,23 +60,32 @@
     margin-top: auto;
 }
 .content_a {
-    margin-left: 17.5vw;
     background: rgb(77, 51, 31);
     color: rgb(255, 255, 255);;
     padding: 20px;
     transition: width 0.3s;
 }
 .content_b {
-    margin-left: 17.5vw;
     color: rgb(77, 51, 31);
     padding: 20px;
+}
+.product{
+    font-size: 21px;
+    color: rgb(77, 51, 31);
+    width: 200px;
+    height: 300px;
+    border-radius: 25px;
+    padding: 5px;
+    margin-top: 10px;
+    outline: 3px solid rgb(77, 51, 31);
+}
+.product img{
+    width: 200px;
+    height: 140px;
 }
 
 #map {
     height: 400px;
     width: 100%;
 }
-a {
-    color: white;
-    text-decoration: none;
-}
+

@@ -2,17 +2,25 @@
 function show_products(){
     $msqli = new mysqli("localhost", "root", "", "drewnosklepdb");
     $result = $msqli->query("SELECT
-    product.name,product.quantity_available,product.price,product.img_path,
+    product.id,product.name,product.quantity_available,product.price,product.img_path,
     c.name,c.description
 FROM product
 INNER JOIN category c on c.id = product.category_id");
 while($row = $result->fetch_assoc()) {
+    echo'<div class="product">';
+    $name = $row["name"];
+    echo '<div style="text-align: center;">'.$name.'</div>';
+    echo '<br>';
 
-    echo $row["name"];
-    echo $row["quantity_available"];
-    echo $row["price"];
-    echo $row["img_path"];
-    
+    $p = $row["img_path"];
+    echo '<img src="' . $p . '" alt="' . $name . '">';
+    echo '<br>';
+
+    echo '<div style="text-align: right;">Dostępna ilość: '.$row["quantity_available"].' m&sup2;</div>';
+    echo '<br>';
+
+    echo '<div style="text-align: right;">Cena: '.$row["price"].' zł za m&sup2</div>';
+    echo '<div>';
 }
 }
 
@@ -43,9 +51,9 @@ while($row = $result->fetch_assoc()) {
     <div class="content_a">
         <center><h2>Produkty</h2></center>
     </div>
-    <div class="content_b">
+</div>
+<div class="right_product">
         <?php show_products(); ?>
-    </div>
 </div>
 
 </body>
