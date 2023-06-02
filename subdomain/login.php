@@ -7,6 +7,8 @@ $msqli = new mysqli("localhost", "root", "", "drewnosklepdb");
 
 $login_post = trim($_POST['e_mail']);
 $haslo_post = trim($_POST['haslo']);
+echo $haslo_post;
+echo $login_post;
 ?>
 <body>
 <div class="container">
