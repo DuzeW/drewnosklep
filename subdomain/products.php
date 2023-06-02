@@ -1,5 +1,6 @@
 <?php
 include '../php_function/sidebar.php';
+include '../php_function/head.php';
 function show_products(){
     $msqli = new mysqli("localhost", "root", "", "drewnosklepdb");
     $result = $msqli->query("SELECT
@@ -10,34 +11,29 @@ INNER JOIN category c on c.id = product.category_id");
 while($row = $result->fetch_assoc()) {
     echo'<div class="product">';
     $name = $row["name"];
-    echo '<div style="text-align: center;">'.$name.'</div>';
-    echo '<br>';
+
 
     $p = $row["img_path"];
     echo '<img src="' . $p . '" alt="' . $name . '">';
     echo '<br>';
 
-    echo '<div style="text-align: right;">Dostępna ilość: '.$row["quantity_available"].' m&sup2;</div>';
+    echo '<div style="text-align: center; height: 63px;">'.$name.'</div>';
     echo '<br>';
 
-    echo '<div style="text-align: right;">Cena: '.$row["price"].' zł za m&sup2</div>';
-    echo '<div>';
+    echo '<div style="text-align: center;">Dostępna ilość: '.$row["quantity_available"].' szt;</div>';
+    echo '<br>';
+
+    echo '<div style="text-align: center;">Cena: '.$row["price"].' zł za szt</div>';
+    echo '</div>';
 }
 }
 
 ?>
 <!DOCTYPE html>
 <html lang="pl">
-<head>
-    <meta charset="utf-8">
-    <meta name="description" content="sklep z deskami" />
-    <meta name="keywords" content="Deski" />
-    <link rel="Shortcut icon" href="../img/d-logo.png"/>
-    <link rel="stylesheet" type="text/css" href="../css/css.css">
-    <script src="../js/toggle.js"></script>
-    <script src="../js/map.js"></script>
-    <title>DrewnoSklep</title>
-</head>
+<?php
+head_for_subdomain();
+?>
 <body>
 <?php
 sidebar_for_subdomain();

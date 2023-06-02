@@ -21,22 +21,26 @@ CREATE TABLE customer(
 
 CREATE TABLE editor(
     id serial PRIMARY KEY,
-    login varchar(50) NOT NULL,
+    e_mail varchar(50) NOT NULL,
     password varchar(50) NOT NULL
 );
 
 CREATE TABLE category(
     id serial PRIMARY KEY,
-    name varchar(30) NOT NULL,
-    description varchar(500)
+    name varchar(50) NOT NULL,
+    description varchar(1500)
 );
 CREATE TABLE product(
     id serial PRIMARY KEY,
     name varchar(50) NOT NULL,
+    class varchar(10),
     price DECIMAL(10,2) NOT NULL,
     quantity_available int,
     img_path varchar(70),
-    category_id integer REFERENCES category(id)
+    category_id integer REFERENCES category(id),
+    scantling_l DECIMAL(7,2) NOT NULL,
+    scantling_h DECIMAL(7,2) NOT NULL,
+    scantling_w DECIMAL(7,2) NOT NULL
 );
 CREATE TABLE products_in_cart(
     id serial PRIMARY KEY,
@@ -76,8 +80,17 @@ VALUES
 ('Deska tarasowa płaska z modrzewia syberyjskiego','Ta płaska deska tarasowa wykonana z modrzewia syberyjskiego oferuje niezawodną jakość i trwałość dla Twojego tarasu. Modrzew syberyjski jest wyjątkowo odporny na zmienne warunki atmosferyczne, dzięki czemu ta deska świetnie sprawdzi się na zewnątrz. Płaska powierzchnia deski zapewnia równomierne i gładkie wykończenie tarasu, idealne do relaksu i spotkań na świeżym powietrzu. Deska tarasowa z modrzewia syberyjskiego jest również łatwa w pielęgnacji, co pozwala cieszyć się pięknem i funkcjonalnością tarasu przez wiele lat.'),
 ('Legar z  modrzewia syberyjskiego','Legar z modrzewia syberyjskiego to wyjątkowo solidna i trwała belka, która znajduje szerokie zastosowanie w konstrukcjach drewnianych. Wykonany z modrzewia syberyjskiego, charakteryzującego się wyjątkową odpornością na wilgoć, szkodniki i zmienne warunki atmosferyczne, legar jest niezwykle trwały i niezawodny.');
 
-INSERT INTO product (name,price,quantity_available,img_path,category_id)
+INSERT INTO product (name,class,price,quantity_available,img_path,category_id,scantling_w,scantling_h,scantling_l)
 VALUES
-('Deska elwacyjna z modrzewia syberyjskiego',155.5,872,'../deski/elewacyjna.png',1);a
+('Deska elwacyjna','AB',32,872,'../deski/elewacyjna.png',1,20,68,3000),
+('Deska tarasowa ryflowana','AB',82,430,'../deski/tarasowa_ryflowana.png',2,27,142,4000),
+('Deska tarasowa ryflowana','B',84,230,'../deski/tarasowa_ryflowana2.png',2,27,142,4000),
+('Deska tarasowa płaska','AB',76,872,'../deski/tarasowa_plaska.png',3,20,90,3000),
+('Deska tarasowa płaska','AB',78,290,'../deski/tarasowa_plaska3.png',3,20,90,4000),
+('Deska tarasowa płaska','B',77,53,'../deski/tarasowa_plaska2.png',3,20,90,5000),
+('Legar ryflowany','',20,354,'../deski/legar_ryflowany.png',4,45,70,2000),
+('Legar płaski','',18,490,'../deski/legar_plaski.png',4,45,70,2000);
 
+INSERT INTO editor (e_mail,password)
+VALUES ('Admin','Admin');
 
