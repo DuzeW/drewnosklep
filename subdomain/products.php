@@ -1,4 +1,5 @@
 <?php
+include '../php_function/sidebar.php';
 function show_products(){
     $msqli = new mysqli("localhost", "root", "", "drewnosklepdb");
     $result = $msqli->query("SELECT
@@ -38,15 +39,9 @@ while($row = $result->fetch_assoc()) {
     <title>DrewnoSklep</title>
 </head>
 <body>
-<div class="sidebar">
-    <div><img src="../img/drewnosklep-logo.png" alt="drewnosklep-logo" width="200" height="150"></div>
-    <div><a href="../index.php">Strona Główna</a></div>
-    <div><a href="products.php">Produkty</a></div>
-    <div>3</div>
-    <button class="toggle-button" onclick="toggleSidebar()">
-        <img src="../img/hidden.png" alt="hidde" width="75" height="75">
-    </button>
-</div>
+<?php
+sidebar_for_subdomain();
+?>
 <div class="right">
     <div class="content_a">
         <center><h2>Produkty</h2></center>

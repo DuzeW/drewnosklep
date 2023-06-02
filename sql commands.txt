@@ -1,6 +1,4 @@
 
-CREATE DATABASE drewnosklepdb;
-
 CREATE TABLE address(
     id serial PRIMARY KEY,
     county varchar(30) NOT NULL,
@@ -20,6 +18,13 @@ CREATE TABLE customer(
     last_name varchar(50) NOT NULL,
     address_id integer REFERENCES address(id)
 );
+
+CREATE TABLE editor(
+    id serial PRIMARY KEY,
+    login varchar(50) NOT NULL,
+    password varchar(50) NOT NULL
+);
+
 CREATE TABLE category(
     id serial PRIMARY KEY,
     name varchar(30) NOT NULL,
@@ -30,6 +35,7 @@ CREATE TABLE product(
     name varchar(50) NOT NULL,
     price DECIMAL(10,2) NOT NULL,
     quantity_available int,
+    img_path varchar(70),
     category_id integer REFERENCES category(id)
 );
 CREATE TABLE products_in_cart(
@@ -63,6 +69,15 @@ CREATE TABLE ordered_products(
     price DECIMAL(10,2) NOT NULL
 );
 
+INSERT INTO category (name,description)
+VALUES
+('Deska elewacyjna z modrzewia syberyjskiego','Ta deska elewacyjna wykonana z modrzewia syberyjskiego jest doskonałym wyborem do wykończenia elewacji budynków. Modrzew syberyjski charakteryzuje się naturalną odpornością na warunki atmosferyczne, co czyni go idealnym materiałem do zastosowań zewnętrznych. Deska elewacyjna ma piękne, charakterystyczne usłojenie drewna, które dodaje elegancji i uroku każdemu budynkowi. Oferuje również trwałość i łatwość w utrzymaniu, co czyni ją popularnym wyborem dla osób poszukujących estetycznego i trwałego rozwiązania dla swojej elewacji.'),
+('Deska tarasowa ryflowana z modrzewia syberyjskiego','Ta ryflowana deska tarasowa wykonana z modrzewia syberyjskiego to doskonały materiał do budowy trwałego i stylowego tarasu. Modrzew syberyjski jest znany z wyjątkowej odporności na wilgoć i insekty, co czyni go doskonałym wyborem na zewnątrz. Ryflowana powierzchnia deski zapewnia lepszą przyczepność i bezpieczeństwo, zwłaszcza gdy deska jest mokra. Dodatkowo, charakterystyczne usłojenie drewna modrzewiowego nadaje tarasowi naturalny, rustykalny wygląd, który jest estetycznie przyjemny i harmonizuje z otoczeniem.'),
+('Deska tarasowa płaska z modrzewia syberyjskiego','Ta płaska deska tarasowa wykonana z modrzewia syberyjskiego oferuje niezawodną jakość i trwałość dla Twojego tarasu. Modrzew syberyjski jest wyjątkowo odporny na zmienne warunki atmosferyczne, dzięki czemu ta deska świetnie sprawdzi się na zewnątrz. Płaska powierzchnia deski zapewnia równomierne i gładkie wykończenie tarasu, idealne do relaksu i spotkań na świeżym powietrzu. Deska tarasowa z modrzewia syberyjskiego jest również łatwa w pielęgnacji, co pozwala cieszyć się pięknem i funkcjonalnością tarasu przez wiele lat.'),
+('Legar z  modrzewia syberyjskiego','Legar z modrzewia syberyjskiego to wyjątkowo solidna i trwała belka, która znajduje szerokie zastosowanie w konstrukcjach drewnianych. Wykonany z modrzewia syberyjskiego, charakteryzującego się wyjątkową odpornością na wilgoć, szkodniki i zmienne warunki atmosferyczne, legar jest niezwykle trwały i niezawodny.');
 
+INSERT INTO product (name,price,quantity_available,img_path,category_id)
+VALUES
+('Deska elwacyjna z modrzewia syberyjskiego',155.5,872,'../deski/elewacyjna.png',1);a
 
 

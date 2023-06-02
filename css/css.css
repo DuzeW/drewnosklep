@@ -41,12 +41,16 @@
     justify-content: center;
 }
 .right_product{
+    float: left;
+    width: 60vw;
+    display: flex;
     margin-left: 17.5vw ;
     justify-content: center;
     transition: width 0.3s;
 
 }
 .right_product.uncollapsed{
+    display: flex;
     margin-left: 7.5vw ;
     justify-content: center;
 
@@ -70,12 +74,14 @@
     padding: 20px;
 }
 .product{
+    float: left;
+    margin: 2vw;
+    display: inline-block;
     font-size: 21px;
     color: rgb(77, 51, 31);
-    width: 200px;
+    width: 10vw;
     height: 300px;
     border-radius: 25px;
-    padding: 5px;
     margin-top: 10px;
     outline: 3px solid rgb(77, 51, 31);
 }
