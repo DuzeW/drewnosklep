@@ -1,7 +1,7 @@
 
 CREATE TABLE address(
     id serial PRIMARY KEY,
-    county varchar(30) NOT NULL,
+    country varchar(30) NOT NULL,
     city varchar(40) NOT NULL,
     zip_code varchar(10) NOT NULL,
     street varchar(50) NOT NULL,
@@ -9,20 +9,15 @@ CREATE TABLE address(
     flat_nr varchar(5)
 );
 
-CREATE TABLE customer(
+CREATE TABLE user_data(
     id serial PRIMARY KEY,
-    e_mali varchar(50) NOT NULL,
-    phone_nr int,
+    e_mail varchar(80) NOT NULL UNIQUE,
+    phone_nr varchar(10),
     password varchar(50) NOT NULL,
     name varchar(50) NOT NULL,
     last_name varchar(50) NOT NULL,
-    address_id integer REFERENCES address(id)
-);
-
-CREATE TABLE editor(
-    id serial PRIMARY KEY,
-    e_mail varchar(50) NOT NULL,
-    password varchar(50) NOT NULL
+    address_id integer REFERENCES address(id),
+    permison_lvl int
 );
 
 CREATE TABLE category(
@@ -44,7 +39,7 @@ CREATE TABLE product(
 );
 CREATE TABLE products_in_cart(
     id serial PRIMARY KEY,
-    customer_id integer REFERENCES customer(id),
+    user_data_id integer REFERENCES user_data(id),
     product_id integer REFERENCES product(id),
     amount int
 );
@@ -60,7 +55,7 @@ CREATE TABLE status_of_order(
 CREATE TABLE orders (
     id serial PRIMARY KEY,
     order_date date NOT NULL,
-    customer_id integer REFERENCES customer(id),
+    user_data_id integer REFERENCES user_data(id),
     payment_type_id integer REFERENCES payment_type(id),
     status_of_order_id integer REFERENCES status_of_order(id),
     address_id integer REFERENCES address(id)
@@ -91,6 +86,15 @@ VALUES
 ('Legar ryflowany','',20,354,'../deski/legar_ryflowany.png',4,45,70,2000),
 ('Legar płaski','',18,490,'../deski/legar_plaski.png',4,45,70,2000);
 
-INSERT INTO editor (e_mail,password)
-VALUES ('Admin','Admin');
 
+INSERT INTO address
+(country,city,zip_code,street,house_nr,flat_nr)
+VALUES
+('admin','admin','00-000','admin','1a',''),
+('Poland','Warszawa','00-730','Wojska Polskiego','98C','9');
+
+INSERT INTO user_data
+(e_mail,phone_nr,password,name,last_name,address_id,permison_lvl)
+VALUES
+('admin','1','admin','admin','admin',1,1),
+('testowy@bob.pl','123123123','test','bob','testowy',2,0);

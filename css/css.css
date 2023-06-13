@@ -70,16 +70,71 @@
     color: rgb(77, 51, 31);
     padding: 20px;
 }
+.switch{
+    display: block;
+    margin: 10px auto;
+    font-size: 18px;
+    color: white;
+    background-color: rgb(77, 51, 31);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.switch button{
+    display: block;
+    margin: 10px auto;
+    font-size: 18px;
+    color: white;
+    background-color: rgb(77, 51, 31);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.switch2{
+    display: block;
+    margin: 10px auto;
+    font-size: 18px;
+    color: rgb(77, 51, 31);
+    background-color: white;
+    border: solid;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.switch2 button{
+    display: block;
+    margin: 10px auto;
+    font-size: 18px;
+    color: rgb(77, 51, 31);
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
 .product{
     float: left;
     font-size: 21px;
     color: rgb(77, 51, 31);
     width: 220px;
-    height: 340px;
+    height: 369px;
     border-radius: 25px;
     padding: 15px;
     margin: 10px;
     outline: 3px solid rgb(77, 51, 31);
+}
+.product button{
+    display: block;
+    margin: 10px auto;
+    font-size: 18px;
+    color: white;
+    background-color: rgb(77, 51, 31);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
 }
 .product img{
     width: 220px;

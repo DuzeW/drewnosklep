@@ -28,8 +28,22 @@ body {
     border: none;
     border-radius: 5px;
 }
+.register-form{
+    background-color: rgb(77, 51, 31);
+    color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 10px;
+}
+.register-form input[type="text"],
+.register-form input[type="password"] {
+    width: 49.7%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
 
-.login-form input[type="submit"] {
+.container input[type="submit"] {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
