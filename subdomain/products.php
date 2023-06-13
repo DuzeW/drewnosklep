@@ -27,7 +27,6 @@ else {
 while($row = $result->fetch_assoc()) {
     echo'<div class="product">';
     $name = $row["name"];
-    $_SESSION['p_id']=0;
     $p = $row["img_path"];
     echo '<img src="' . $p . '" alt="' . $name . '">';
     echo '<br>';
@@ -48,15 +47,28 @@ while($row = $result->fetch_assoc()) {
 
 
     echo '<div style="text-align: center;height: 21px;">Cena: '.$price.' zł za m&sup2</div>';
-    echo '<button class="button">Sprwadź</button>';
+    echo '<button class="button"><a href="p_chosen.php">Sprwadź</a></button>';
     echo '</div>';
     }
     else{
         echo '<div style="text-align: center; height: 42px;">Dostępna ilość: '.$quantity_available.' szt;</div>';
         echo '<br>';
 
+
         echo '<div style="text-align: center;height: 21px;">Cena: '.$price.' zł za szt</div>';
-        echo '<button class="button"><a href="p_chosen.php">Sprwadź</a></button>';
+
+
+        if (isset($_GET['p_chosen'])) {
+            $_SESSION['p_id'] = $_GET['p_chosen'];
+            header("Location: p_chosen.php");
+        }
+        $p_id= $row['id'];
+
+        echo '<form method="GET" action="">
+        <button class="button" name="p_chosen" value="'.$p_id.'">Sprawdź</button>
+      </form>';
+
+
         echo '</div>';
     }
 }
