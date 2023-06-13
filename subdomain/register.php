@@ -37,21 +37,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $checkemail = "SELECT * FROM user_data WHERE e_mail = '$e_mail'";
     $checkemail = $mysqli->query($checkemail);
     if ($checkemail->num_rows > 0) {
-        echo "Użytkownik o podanym adresie e-mail już istnieje!";
+        echo'<script>pop_up("Błędnie dane!");</script>';
+
     } else {
-        /* problem z polaczeniem odpowiedzniego id do uzytkownika :(
+
           $addaddress = "INSERT INTO address (country,city,zip_code,street,house_nr,flat_nr)
                         VALUES ('$country','$city','$zip_code','$street','$house_nr','$flat_nr')";
-        $id_address="SELECT id FROM address ";
-        echo $country;
-        $id_address = $mysqli->query($id_address);
-
-        echo $id_address;
-        
+        $addaddress= $mysqli ->query($addaddress);
+        $id_address = $mysqli->insert_id;
         $adduser = "INSERT INTO user_data (e_mail, phone_nr, password, name, last_name, address_id, permison_lvl)
                         VALUES ('$e_mail','$phone_nr','$name','$last_name','$phone_nr',$id_address,0)";
         $adduser= $mysqli ->query($adduser);
-        $addaddress= $mysqli ->query($addaddress);*/
+        header("Location: login.php");
         
     }
 }

@@ -16,8 +16,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $mysqli->real_escape_string($password);
     $query = "SELECT * FROM user_data WHERE e_mail = '$email' AND password = '$password'";
     $result = $mysqli->query($query);
+
     if ($result->num_rows == 1) {
         echo "Zalogowano pomyślnie!";
+        $query = "SELECT name FROM user_data WHERE e_mail = '$email'";
+        $result = $mysqli->query($query);
+        $row = mysqli_fetch_assoc($result);
+        $name = $row['name'];
+        $_SESSION['name'] = $name;
         $_SESSION['logged_in'] = true;
         $_SESSION['email'] = $email;
         header("Location: ../index.php");

@@ -6,6 +6,7 @@ function sidebar(){
     <div><a href="index.php">Strona Główna</a></div>
     <div><a href="subdomain/products.php">Produkty</a></div>';
     if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']){
+        $name=$_SESSION['name'];
         echo '<div><a href="subdomain/logout.php">Logout</a></div>';
     }
     else{
@@ -13,7 +14,12 @@ function sidebar(){
     }
     echo '<button class="toggle-button" onclick="toggleSidebar()">
         <img src="img/hidden.png" alt="hidde" width="75" height="75">
-    </button>
+    </button>';
+    if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
+        echo 'Cześć: ';
+        echo $_SESSION['name'];
+    }
+        echo '
 </div>
     ';}
 

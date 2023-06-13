@@ -22,8 +22,8 @@ function head_for_login(){
     <meta name="keywords" content="Deski" />
     <link rel="Shortcut icon" href="../img/d-logo.png"/>
     <link rel="stylesheet" type="text/css" href="../css/login.css">
+    <script src="../js/pop_up.js"></script>
     <script src="../js/toggle.js"></script>
-    <script src="../js/map.js"></script>
     <title>DrewnoSklep</title>
 </head>
     ';

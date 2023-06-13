@@ -31,6 +31,10 @@
     color: rgb(77, 51, 31);
     text-decoration: none;
 }
+.sidebar.collapsed{
+    color: rgb(77, 51, 31);
+    text-decoration: none;
+}
 .right{
     margin-left: 17.5vw ;
     justify-content: center;
