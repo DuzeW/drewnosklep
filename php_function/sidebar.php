@@ -6,7 +6,7 @@ function sidebar(){
     <div><a href="index.php">Strona Główna</a></div>
     <div><a href="subdomain/products.php">Produkty</a></div>';
     if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']){
-        $name=$_SESSION['name'];
+
         echo '<div><a href="subdomain/logout.php">Logout</a></div>';
     }
     else{

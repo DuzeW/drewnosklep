@@ -123,13 +123,13 @@
     font-size: 21px;
     color: rgb(77, 51, 31);
     width: 220px;
-    height: 369px;
+    height: 363px;
     border-radius: 25px;
     padding: 15px;
     margin: 10px;
     outline: 3px solid rgb(77, 51, 31);
 }
-.product button{
+.product button {
     display: block;
     margin: 10px auto;
     font-size: 18px;
@@ -139,6 +139,10 @@
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
+}
+.product a{
+    color: white;
+    text-decoration: none;
 }
 .product img{
     width: 220px;

@@ -66,7 +66,7 @@ $mysqli->close();
             <input type="password" name="password" placeholder="Hasło" required minlength="8">
             <input type="text" name="name" placeholder="Imię" required>
             <input type="text" name="last_name" placeholder="Nazwisko" required>
-            <input type="text" name="phone_nr" placeholder="Numer telefonu" required>
+            <input type="text" name="phone_nr" placeholder="Numer telefonu" required minlength="9">
             <H3>Adres</H3>
             <input type="text" name="country" placeholder="Kraj" required>
             <input type="text" name="city" placeholder="Miasto" required>
