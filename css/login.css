@@ -19,8 +19,12 @@ body {
     padding: 20px;
     border-radius: 10px;
 }
-
+.login-form a{
+    color: white;
+    text-decoration: none;
+}
 .login-form input[type="text"],
+.login-form input[type="email"],
 .login-form input[type="password"] {
     width: 100%;
     padding: 10px;
@@ -35,6 +39,7 @@ body {
     border-radius: 10px;
 }
 .register-form input[type="text"],
+.register-form input[type="email"],
 .register-form input[type="password"] {
     width: 49.7%;
     padding: 10px;
@@ -43,7 +48,9 @@ body {
     border-radius: 5px;
 }
 
+.container input[type="register"],
 .container input[type="submit"] {
+    text-align: center;
     width: 100%;
     padding: 10px;
     margin-top: 10px;

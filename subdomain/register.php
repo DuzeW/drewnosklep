@@ -62,7 +62,7 @@ $mysqli->close();
         <h2>Rejestracja</h2>
         <form method="POST">
             <H3>Dane osobowe</H3>
-            <input type="text" name="e_mail" placeholder="E-mail" required pattern=".*@.*">
+            <input type="email" name="e_mail" placeholder="E-mail" required pattern=".*@.*">
             <input type="password" name="password" placeholder="Hasło" required minlength="8">
             <input type="text" name="name" placeholder="Imię" required>
             <input type="text" name="last_name" placeholder="Nazwisko" required>

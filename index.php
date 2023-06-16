@@ -30,6 +30,8 @@ sidebar();
 
 
     <h2>Nasza Oferta</h2>
+</div>
+    <div class="content_b">
     Oferujemy szeroki wybór najwyższej jakości desk, które spełnią nawet najbardziej wymagające oczekiwania. Niezależnie od tego,
     czy szukasz idealnej deski do klasycznego, minimalistycznego czy też nowoczesnego wystroju, mamy dla Ciebie coś wyjątkowego.
 <br><br>

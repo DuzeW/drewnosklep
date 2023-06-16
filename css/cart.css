@@ -1,0 +1,24 @@
+.add_to_cart{
+    color: rgb(77, 51, 31);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.add_to_cart input[type="number"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid rgb(77, 51, 31);
+    border-radius: 5px;
+}
+.add_to_cart input[type="submit"] {
+    display: block;
+    margin: 10px auto;
+    font-size: 18px;
+    color: white;
+    background-color: rgb(77, 51, 31);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
