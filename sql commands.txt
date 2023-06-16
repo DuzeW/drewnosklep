@@ -96,5 +96,5 @@ VALUES
 INSERT INTO user_data
 (e_mail,phone_nr,password,name,last_name,address_id,permison_lvl)
 VALUES
-('admin','1','admin','admin','admin',1,1),
+('admin@a','1','admin','admin','admin',1,1),
 ('testowy@bob.pl','123123123','test','bob','testowy',2,0);
