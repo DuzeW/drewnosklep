@@ -73,6 +73,14 @@
 .content_b {
     color: rgb(77, 51, 31);
     padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content_b img{
+    max-width: 75%;
+    max-height: 75%;
+    outline: 3px solid rgb(77, 51, 31);
 }
 .switch{
     display: block;

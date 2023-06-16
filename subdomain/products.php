@@ -35,6 +35,11 @@ while($row = $result->fetch_assoc()) {
     echo '<br>';
     $quantity_available=$row["quantity_available"];
     $price=$row["price"];
+    if (isset($_GET['p_chosen'])) {
+        $_SESSION['p_id'] = $_GET['p_chosen'];
+        header("Location: p_chosen.php");
+    }
+    $p_id= $row['id'];
     if(isset($_GET['switch'])){
         $l=$row["scantling_l"];
         $h=$row["scantling_h"];
@@ -47,7 +52,9 @@ while($row = $result->fetch_assoc()) {
 
 
     echo '<div style="text-align: center;height: 21px;">Cena: '.$price.' zł za m&sup2</div>';
-    echo '<button class="button"><a href="p_chosen.php">Sprwadź</a></button>';
+        echo '<form method="GET" action="">
+        <button class="button" name="p_chosen" value="'.$p_id.'">Sprawdź</button>
+      </form>';
     echo '</div>';
     }
     else{
@@ -56,13 +63,6 @@ while($row = $result->fetch_assoc()) {
 
 
         echo '<div style="text-align: center;height: 21px;">Cena: '.$price.' zł za szt</div>';
-
-
-        if (isset($_GET['p_chosen'])) {
-            $_SESSION['p_id'] = $_GET['p_chosen'];
-            header("Location: p_chosen.php");
-        }
-        $p_id= $row['id'];
 
         echo '<form method="GET" action="">
         <button class="button" name="p_chosen" value="'.$p_id.'">Sprawdź</button>
