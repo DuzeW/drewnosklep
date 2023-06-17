@@ -61,28 +61,40 @@ WHERE product.id = '$p_id'");
 </div>
 </form>';
     }
-    if (isset($_GET['amount_m'])) {
-        $amount_m=$_GET['amount_m'];
-        $change=$h/1000*$l/1000;
-        $amount_m=ceil($amount_m/$change);
-        $id=$_SESSION['id'];
-        $add_p = "INSERT INTO products_in_cart (user_data_id, product_id,amount)
+        if (isset($_GET['amount_m'])) {
+            if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] = true){
+            $amount_m = $_GET['amount_m'];
+            $change = $h / 1000 * $l / 1000;
+            $amount_m = ceil($amount_m / $change);
+            $id = $_SESSION['id'];
+            $add_p = "INSERT INTO products_in_cart (user_data_id, product_id,amount)
                         VALUES ('$id','$p_id','$amount_m')";
-        $add_p= $mysqli ->query($add_p);
-        header("Location: cart.php");
-    }
-    if (isset($_GET['amount_s'])) {
-        $amount_m=$_GET['amount_s'];
-        $id=$_SESSION['id'];
-        $add_p = "INSERT INTO products_in_cart (user_data_id, product_id,amount)
+            $add_p = $mysqli->query($add_p);
+            header("Location: cart.php");
+            }
+            else{
+                    header("Location: login.php");
+            }
+        }
+        if (isset($_GET['amount_s'])) {
+            if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] = true){
+            $amount_m = $_GET['amount_s'];
+            $id = $_SESSION['id'];
+            $add_p = "INSERT INTO products_in_cart (user_data_id, product_id,amount)
                         VALUES ('$id','$p_id','$amount_m')";
-        $add_p= $mysqli ->query($add_p);
-        header("Location: cart.php");
-    }
+            $add_p = $mysqli->query($add_p);
+            header("Location: cart.php");
+        }
+        else{
+            header("Location: login.php");
+        }
+        }
+
+
     if(isset($_GET['switch'])) {
         echo '<div class="add_to_cart">
 <form method="GET">
-            <input type="number" name="amount_m" placeholder="Ilość" max="' . $quantity_available . '"> m&sup2
+            <input type="number" name="amount_m" placeholder="Ilość" max="' . $quantity_available . '" min="1"> m&sup2
             <input type="submit" value="Dodaj do koszyka">
         </form>
         </div>';
@@ -90,7 +102,7 @@ WHERE product.id = '$p_id'");
     else{
         echo '<div class="add_to_cart">
 <form method="GET">
-            <input type="number" name="amount_s" placeholder="Ilość" max="' . $quantity_available . '"> szt
+            <input type="number" name="amount_s" placeholder="Ilość" max="' . $quantity_available . '"min="1"> szt
             <input type="submit" value="Dodaj do koszyka">
         </form>
         </div>';
