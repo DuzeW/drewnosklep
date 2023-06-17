@@ -43,10 +43,6 @@ CREATE TABLE products_in_cart(
     product_id integer REFERENCES product(id),
     amount int
 );
-CREATE TABLE payment_type(
-    id serial PRIMARY KEY,
-    name varchar(25) NOT NULL
-);
 CREATE TABLE status_of_order(
     id serial PRIMARY KEY,
     name varchar(20) NOT NULL,
