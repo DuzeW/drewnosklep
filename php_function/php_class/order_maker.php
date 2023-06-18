@@ -47,7 +47,12 @@ WHERE user_data_id  = '$user_id' AND product_id = '$key'");
         $price=$i->get_price();
         $p_id=$i->get_id();
         $amount=$i->get_amount();
+        $query = $mysqli->query("SELECT quantity_available FROM product WHERE id='$p_id'");
+        $row = $query->fetch_assoc();
+        $q = $row['quantity_available'] - $amount;
 
+        $updateQuery = "UPDATE product SET quantity_available='$q' WHERE id='$p_id'";
+        $updateResult = $mysqli->query($updateQuery);
 
         $query = $mysqli->query("INSERT INTO 
     ordered_products(order_id	,product_id, amount, price)

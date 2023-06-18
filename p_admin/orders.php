@@ -1,4 +1,7 @@
 <?php
+include '../php_function/show_orders.php';
+include '../php_function/head.php';
+head_for_subdomain_p_chosen();
 $mysqli = new mysqli("localhost", "root", "", "drewnosklepdb");
 
 if ($mysqli->connect_error) {
@@ -61,12 +64,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (isset($_POST["delete_order"])) {
         $orderId = $_POST["order_id"];
+        $deleteResult = deleteOrder($orderId);
 
     } elseif (isset($_POST["update_order"])) {
         $orderId = $_POST["order_id"];
         $statusId = $_POST["status_id"];
         $query = "UPDATE orders SET status_of_order_id='$statusId' WHERE id='$orderId'";
         $result = $mysqli->query($query);
+    }
+    elseif (isset($_POST["show_order"])){
+        $orderId = $_POST["order_id"];
+        echo 'Pokazuje zamówienie nr:';
+        echo $orderId;
+        show_ordered_p($orderId);
     }
 }
 ?>
@@ -110,6 +120,7 @@ if (isset($orders)) {
                     <input type="hidden" name="order_id" value="<?php echo $orderId; ?>">
                     <label for="status_id">Nowy status zamówienia:</label>
                     <input type="text" name="status_id" id="status_id" value="<?php echo $statusId; ?>"><br>
+                    <input type="submit" name="show_order" value="Pokaż zamówienie">
                     <input type="submit" name="update_order" value="Zaktualizuj zamówienie">
                     <input type="submit" name="delete_order" value="Usuń zamówienie">
                 </form>

@@ -4,7 +4,7 @@ head_for_login();
 ?>
 <?php
 $mysqli = new mysqli("localhost", "root", "", "drewnosklepdb");
-if (isset($_COOKIE['email']) && isset($_COOKIE['password'])) {
+if (isset($_COOKIE['email']) && isset($_COOKIE['password'])&&$_COOKIE['email']!=1) {
     $cookie_email = $_COOKIE['email'];
     $cookie_password = $_COOKIE['password'];
     $query = "SELECT * FROM user_data WHERE e_mail = '$cookie_email' AND password = '$cookie_password'";
