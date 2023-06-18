@@ -16,6 +16,9 @@ function sidebar(){
         echo '<div><a href="subdomain/cart.php">Koszyk</a></div>';
         echo '<div><a href="subdomain/order_history.php">Historia zmówień</a></div>';
     }
+    if(isset($_SESSION['id'])&&$_SESSION['id']==1) {
+        echo '<div><a href="admin_panel.php">Panel admina</a></div>';
+    }
     echo '<button class="toggle-button" onclick="toggleSidebar()">
         <img src="img/hidden.png" alt="hidde" width="75" height="75">
     </button>';

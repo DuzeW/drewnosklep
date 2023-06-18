@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $addaddress= $mysqli ->query($addaddress);
         $id_address = $mysqli->insert_id;
         $adduser = "INSERT INTO user_data (e_mail, phone_nr, password, name, last_name, address_id, permison_lvl)
-                        VALUES ('$e_mail','$phone_nr','$name','$last_name','$phone_nr',$id_address,0)";
+                        VALUES ('$e_mail','$phone_nr','$password','$name','$last_name',$id_address,0)";
         $adduser= $mysqli ->query($adduser);
         header("Location: login.php");
         
