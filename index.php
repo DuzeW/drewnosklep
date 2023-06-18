@@ -32,7 +32,7 @@ sidebar();
     <h2>Nasza Oferta</h2>
 </div>
     <div class="content_b">
-    Oferujemy szeroki wybór najwyższej jakości deski, które spełnią nawet najbardziej wymagające oczekiwania. Niezależnie od tego,
+    Oferujemy szeroki wybór najwyższej jakości deskek, które spełnią nawet najbardziej wymagające oczekiwania. Niezależnie od tego,
     czy szukasz idealnej deski do klasycznego, minimalistycznego czy też nowoczesnego wystroju, mamy dla Ciebie coś wyjątkowego.
 <br><br>
     Stawiamy na ekologiczne rozwiązania, dlatego wszystkie nasze produkty pochodzą z certyfikowanych źródeł,

@@ -42,6 +42,7 @@ WHERE user_data_id  = '$user_id' AND product_id = '$key'");
         }
     }
     foreach ($tab as $i){
+        // $i->show_info(); TO EMAIL
         $i->show_info();
         echo'<br>';
         $price=$i->get_price();
