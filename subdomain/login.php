@@ -3,9 +3,29 @@ include '../php_function/head.php';
 head_for_login();
 ?>
 <?php
-
-
 $mysqli = new mysqli("localhost", "root", "", "drewnosklepdb");
+if (isset($_COOKIE['email']) && isset($_COOKIE['password'])) {
+    $cookie_email = $_COOKIE['email'];
+    $cookie_password = $_COOKIE['password'];
+    $query = "SELECT * FROM user_data WHERE e_mail = '$cookie_email' AND password = '$cookie_password'";
+    $result = $mysqli->query($query);
+    if ($result->num_rows == 1) {
+        echo "Zalogowano pomyślnie!";
+        $query = "SELECT name,id FROM user_data WHERE e_mail = '$cookie_email'";
+        $result = $mysqli->query($query);
+        $row = mysqli_fetch_assoc($result);
+        $name = $row['name'];
+        $id = $row['id'];
+        $_SESSION['name'] = $name;
+        $_SESSION['id'] = $id;
+        $_SESSION['logged_in'] = true;
+        $_SESSION['email'] = $cookie_email;
+        setcookie("email", $cookie_email, time() + (86400 * 30), "/");
+        setcookie("password", $cookie_password, time() + (86400 * 30), "/");
+        header("Location: ../index.php");
+        exit();
+    }
+}
 if ($mysqli->connect_errno) {
     die("Błąd połączenia: " . $mysqli->connect_error);
 }
@@ -28,6 +48,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['id'] = $id;
         $_SESSION['logged_in'] = true;
         $_SESSION['email'] = $email;
+        setcookie("email", $email, time() + (86400 * 30), "/");
+        setcookie("password", $password, time() + (86400 * 30), "/");
         header("Location: ../index.php");
         exit();
     }
