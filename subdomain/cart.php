@@ -1,6 +1,7 @@
 <?php
 include '../php_function/sidebar.php';
 include '../php_function/head.php';
+include '../php_function/cart_to_order.php';
 
 head_for_subdomain_p_chosen();
 ?>
@@ -16,15 +17,14 @@ function show_cart(){
     $mysqli = new mysqli("localhost", "root", "", "drewnosklepdb");
     $id=$_SESSION['id'];
     $result = $mysqli->query("
-SELECT user_data_id, product_id,amount,p.name,p.class,p.price,p.img_path
+SELECT products_in_cart.id, user_data_id, product_id,amount,p.name,p.class,p.price,p.img_path
 FROM products_in_cart 
 INNER JOIN product p ON p.id = product_id
 WHERE user_data_id  = '$id'");
-
     if ($result->num_rows > 0) {
         echo '<div class="cart">';
         echo '<table>';
-        echo '<tr><th></th><th>Nazwa</th><th>Klasa</th><th>Cena za szt</th><th>ilość</th><th>suma</th></tr>';
+        echo '<tr><th></th><th>Nazwa</th><th>Klasa</th><th>Cena za szt</th><th>ilość</th><th>suma</th><th></th></tr>';
         $sum=0;
         while ($row = $result->fetch_assoc()) {
             $sum_p = $row['amount']*$row['price'];
@@ -35,13 +35,30 @@ WHERE user_data_id  = '$id'");
             echo '<td>' . $row['price'] . ' zł</td>';
             echo '<td>' . $row['amount'] . '</td>';
             echo '<td>' . $sum_p . ' zł</td>';
+            echo '<td>';
+            $id_p=$row['id'];
+            echo '
+<form method="GET">
+    <div class="add_to_cart">
+  <button type="submit" class="button" name="delete" value="'. $id_p .'">Usuń</button>
+</div>
+</form>';
+echo '</td>';
             $sum+=$sum_p;
             echo '</tr>';
         }
+
+        if(isset($_GET['delete'])) {
+            $value=$_GET['delete'];
+            $result = $mysqli->query("DELETE FROM products_in_cart WHERE id='$value'");
+            header("Location: ".$_SERVER['PHP_SELF']);
+        }
+
         echo '<tr>';
         echo '<th colspan="4"></th>';
         echo '<th> Suma</th>';
         echo '<td>' . $sum . ' zł</td>';
+        echo '<th></th>';
         echo '</tr>';
         echo '</table>';
 
@@ -143,6 +160,7 @@ WHERE user_data.id = '$id'");
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
+                    $address_id=$row['address_id'];
                     echo "<br>";
                     echo "Kraj: " . $row['country'] . "<br>";
                     echo "Miejscowość: " . $row['city'] . "<br>";
@@ -159,8 +177,9 @@ WHERE user_data.id = '$id'");
 
 
         if(isset($_GET['final'])) {
+            cart_to_order($_SESSION['id'],$address_id);
+            order_maker($_SESSION['id']);
 
-            header("Location: orders.php");
         }
         echo '<form method="GET">
 <div class="add_to_cart">
@@ -174,4 +193,5 @@ WHERE user_data.id = '$id'");
 
 
 }
+
 show_cart();

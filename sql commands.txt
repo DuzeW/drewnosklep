@@ -52,7 +52,6 @@ CREATE TABLE orders (
     id serial PRIMARY KEY,
     order_date date NOT NULL,
     user_data_id integer REFERENCES user_data(id),
-    payment_type_id integer REFERENCES payment_type(id),
     status_of_order_id integer REFERENCES status_of_order(id),
     address_id integer REFERENCES address(id)
 );
@@ -94,3 +93,11 @@ INSERT INTO user_data
 VALUES
 ('admin@a','1','admin','admin','admin',1,1),
 ('testowy@bob.pl','123123123','test','bob','testowy',2,0);
+
+INSERT INTO status_of_order 
+(name,description)
+VALUES
+('Niepotwierdzone','Twoje zamówienie czeka na potwierdzenie'),
+('W realizacji','Twoje zamówienie jest kompletowane'),
+('Trwa dostawa','Twoje zamówienie jest w drodze do wskazanego adresu'),
+('Zeralizowane','Twoje zamówienie zostało zralizowane')
