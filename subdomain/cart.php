@@ -193,5 +193,9 @@ WHERE user_data.id = '$id'");
 
 
 }
-
-show_cart();
+if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
+    show_cart();
+}
+else{
+    header("Location: login.php");
+}
