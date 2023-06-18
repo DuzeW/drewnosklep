@@ -54,10 +54,12 @@ WHERE user_data_id  = '$user_id' AND product_id = '$key'");
 VALUES
     ('$orders_id','$p_id','$amount','$price')
     ");
+
+
         $query = $mysqli->query("
         DELETE FROM products_in_cart WHERE user_data_id='$user_id'
         ");
-        header("Location: index.php");
+        header("Location: ../subdomain/order_history.php");
     }
 
 }
